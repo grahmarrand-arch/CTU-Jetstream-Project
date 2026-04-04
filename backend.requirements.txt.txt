@@ -1,0 +1,35 @@
+"""
+This tells GitHub exactly what the app needs to run
+
+The Python code depends on external libraries and for Sprint 1, those are:
+
+fastapi → the API framework
+
+uvicorn → the development server
+
+mysql-connector-python → the MySQL database driver
+
+Python does not include these by default
+
+If someone clones the repo without a requirements file, the app will break immediately.
+
+The requirements file is basically the app saying:
+
+“Hey, before you run me, install these things.”
+
+"""
+
+fastapi
+uvicorn
+mysql-connector-python 
+
+"""
+
+When you eventually deploy Jetstream (AWS, Azure, Docker, etc.), the server will run:
+
+pip install -r requirements.txt
+
+This installs everything automatically and allows automated testing tools to run the code i.e.
+CI/CD tools
+
+"""
