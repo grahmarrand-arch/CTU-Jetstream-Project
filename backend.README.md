@@ -1,4 +1,4 @@
-# Jetstream LLC — Sprint 1
+# Jetstream LLC, Sprint 1
 ## Flight Search Module (Departure, Destination, Date)
 
 Jetstream LLC is developing a modern airline web application.  
