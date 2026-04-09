@@ -13,7 +13,7 @@ Sprint 1 focuses on implementing the foundational Flight Search feature.
 - Display results with price + times  
 - Optional FastAPI endpoint  
 - Fully commented code  
-- Agile sprint hour breakdown  
+- Agile sprint hour breakdown 
 
 ---
 
