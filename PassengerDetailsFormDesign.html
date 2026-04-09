@@ -1,0 +1,125 @@
+<!--
+passenger_details_form.html
+---------------------------
+This standalone HTML file provides a clean passenger details form
+for Jetstream LLC's airline booking system.
+
+It is backend-agnostic and can be served by any Python framework
+(FastAPI, Flask, Django, or a custom server).
+
+Every element is fully commented for clarity.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Title displayed in browser tab -->
+    <title>Passenger Details - Jetstream</title>
+
+    <!-- Inline CSS for standalone use -->
+    <style>
+        /* Page layout: center content and apply aviation-themed colors */
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef4ff; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            padding-top: 40px;
+        }
+
+        /* Container for the form */
+        .form-container {
+            background: white;
+            padding: 25px;
+            width: 450px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.15);
+        }
+
+        /* Section header */
+        h2 {
+            text-align: center;
+            color: #003366;
+        }
+
+        /* Input styling */
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        /* Submit button styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #003366;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        /* Hover effect */
+        button:hover {
+            background: #0055aa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main form container -->
+    <div class="form-container">
+        <h2>Passenger Details</h2>
+
+        <!--
+        Form posts to the Python backend at /submit_passenger
+        The backend will store passenger details and proceed to fare calculation.
+        -->
+        <form action="/submit_passenger" method="POST">
+
+            <!-- Passenger full name -->
+            <input type="text" name="full_name" placeholder="Full Name" required />
+
+            <!-- Passenger age -->
+            <input type="number" name="age" placeholder="Age" min="0" required />
+
+            <!-- Passenger gender -->
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Non-Binary</option>
+                <option>Prefer Not to Say</option>
+            </select>
+
+            <!-- Passenger passport number -->
+            <input type="text" name="passport" placeholder="Passport Number" required />
+
+            <!-- Passenger nationality -->
+            <input type="text" name="nationality" placeholder="Nationality" required />
+
+            <!-- Passenger seat class selection -->
+            <select name="seat_class" required>
+                <option value="">Select Seat Class</option>
+                <option>Economy</option>
+                <option>Premium Economy</option>
+                <option>Business</option>
+                <option>First Class</option>
+            </select>
+
+            <!-- Submit button -->
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+
+</body>
+</html>
