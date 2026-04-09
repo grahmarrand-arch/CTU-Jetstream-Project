@@ -46,7 +46,3 @@ jetstream-backend/
 3. Test search endpoint:
    http://localhost:8000/search?departure=JFK&destination=LAX&date=2026-05-10
 
-
-## End of Sprint 1
-This module is now ready for integration into the Jetstream backend.
-backend.README.md
