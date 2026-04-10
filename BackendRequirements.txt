@@ -1,51 +1,27 @@
-# -------------------------------------------------------------
-# Jetstream Airline Backend — Requirements File
-# -------------------------------------------------------------
-# This file lists ALL Python dependencies required for Jetstream
-# to run successfully in development, CI/CD, and deployment.
-#
-# GitHub, Docker, and cloud servers will run:
-#     pip install -r requirements.txt
-#
-# Every dependency below is included because it is used in one or
-# more modules created during this session.
-# -------------------------------------------------------------
+# Jetstream Airline Backend - Python Dependencies
+# These packages are required for the backend, CI/CD, and deployment.
 
+# Web framework and server
+fastapi
+uvicorn
 
-# -----------------------------
-# Web Framework & Server Layer
-# -----------------------------
-fastapi                 # Main API framework used for routing, forms, and backend logic
-uvicorn                 # ASGI server used to run the FastAPI application
+# MySQL database driver
+mysql-connector-python
 
+# Password hashing for authentication
+bcrypt
 
-# -----------------------------
-# Database Connectivity
-# -----------------------------
-mysql-connector-python  # MySQL driver used by Jetstream's database interface modules
+# Required for handling HTML form submissions in FastAPI
+python-multipart
 
+# Email validation for registration and confirmation
+email-validator
 
-# -----------------------------
-# Security & Authentication
-# -----------------------------
-bcrypt                  # Used in password_utils.py for hashing and verifying passwords
+# Template rendering engine for HTML views
+jinja2
 
+# Linting tool used in CI/CD pipeline
+flake8
 
-# -----------------------------
-# Form Handling (FastAPI Requirement)
-# -----------------------------
-python-multipart        # Required for handling HTML <form> POST submissions (login, passenger forms)
-
-
-# -----------------------------
-# Email & Template Utilities
-# -----------------------------
-email-validator         # Used for validating email addresses in registration & confirmation modules
-jinja2                  # Optional but recommended for rendering dashboard and HTML templates
-
-
-# -----------------------------
-# CI/CD Tools (Used by ci_cd_pipeline.py)
-# -----------------------------
-flake8                  # Linter used in automated pipeline to enforce code quality
-pytest                  # Test runner used in CI/CD to execute Jetstream test suite
+# Test runner used in CI/CD pipeline
+pytest
