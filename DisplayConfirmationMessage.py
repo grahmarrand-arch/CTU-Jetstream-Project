@@ -1,6 +1,4 @@
 """
-confirmation_messages.py
-------------------------
 Provides standardized success and error message formats.
 This keeps backend responses consistent across all Jetstream services.
 """
