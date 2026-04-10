@@ -1,5 +1,4 @@
 # Credit/debit card validator for Jetstream.
-# Render-safe version with simple comments.
 
 from datetime import datetime
 
