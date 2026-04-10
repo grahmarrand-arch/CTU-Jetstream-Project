@@ -1,35 +1,51 @@
-"""
-This tells GitHub exactly what the app needs to run
+# -------------------------------------------------------------
+# Jetstream Airline Backend — Requirements File
+# -------------------------------------------------------------
+# This file lists ALL Python dependencies required for Jetstream
+# to run successfully in development, CI/CD, and deployment.
+#
+# GitHub, Docker, and cloud servers will run:
+#     pip install -r requirements.txt
+#
+# Every dependency below is included because it is used in one or
+# more modules created during this session.
+# -------------------------------------------------------------
 
-The Python code depends on external libraries and for Sprint 1, those are:
 
-fastapi → the API framework
+# -----------------------------
+# Web Framework & Server Layer
+# -----------------------------
+fastapi                 # Main API framework used for routing, forms, and backend logic
+uvicorn                 # ASGI server used to run the FastAPI application
 
-uvicorn → the development server
 
-mysql-connector-python → the MySQL database driver
+# -----------------------------
+# Database Connectivity
+# -----------------------------
+mysql-connector-python  # MySQL driver used by Jetstream's database interface modules
 
-Python does not include these by default
 
-If someone clones the repo without a requirements file, the app will break immediately.
+# -----------------------------
+# Security & Authentication
+# -----------------------------
+bcrypt                  # Used in password_utils.py for hashing and verifying passwords
 
-The requirements file is basically the app saying:
 
-“Hey, before you run me, install these things.”
+# -----------------------------
+# Form Handling (FastAPI Requirement)
+# -----------------------------
+python-multipart        # Required for handling HTML <form> POST submissions (login, passenger forms)
 
-"""
 
-fastapi
-uvicorn
-mysql-connector-python 
+# -----------------------------
+# Email & Template Utilities
+# -----------------------------
+email-validator         # Used for validating email addresses in registration & confirmation modules
+jinja2                  # Optional but recommended for rendering dashboard and HTML templates
 
-"""
 
-When you eventually deploy Jetstream (AWS, Azure, Docker, etc.), the server will run:
-
-pip install -r requirements.txt
-
-This installs everything automatically and allows automated testing tools to run the code i.e.
-CI/CD tools
-
-"""
+# -----------------------------
+# CI/CD Tools (Used by ci_cd_pipeline.py)
+# -----------------------------
+flake8                  # Linter used in automated pipeline to enforce code quality
+pytest                  # Test runner used in CI/CD to execute Jetstream test suite
