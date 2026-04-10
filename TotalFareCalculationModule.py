@@ -1,5 +1,4 @@
 # Fare calculation module for Jetstream.
-# Render-safe version with simple comments.
 
 class FareCalculator:
     # Handles fare calculation logic.
