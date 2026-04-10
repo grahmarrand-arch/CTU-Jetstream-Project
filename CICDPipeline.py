@@ -1,6 +1,4 @@
 """
-ci_cd_pipeline.py
------------------
 CI/CD pipeline module for Jetstream LLC.
 
 Includes:
