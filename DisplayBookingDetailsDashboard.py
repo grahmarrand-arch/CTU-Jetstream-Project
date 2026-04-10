@@ -1,10 +1,8 @@
 """
-dashboard_booking_display.py
-----------------------------
-This standalone module prepares booking details for display
+This module prepares booking details for display
 on the Jetstream dashboard.
 
-It does not handle HTML rendering — instead, it returns a clean,
+It does not handle HTML rendering. Instead, it returns a clean,
 structured dictionary that any UI layer (HTML, React, mobile app)
 can consume.
 
