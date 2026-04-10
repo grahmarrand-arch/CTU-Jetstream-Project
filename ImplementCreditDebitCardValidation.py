@@ -1,7 +1,6 @@
 """
-card_validator.py
------------------
-This standalone module validates credit/debit card information for Jetstream LLC.
+
+This module validates credit/debit card information for Jetstream LLC.
 
 It performs:
 - Luhn algorithm check for card number validity
