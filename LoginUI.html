@@ -1,37 +1,22 @@
-<!--
-
-The login UI for Jetstream LLC.
-It is intentionally simple, clean, and easy to integrate with any Python backend
-(Flask, FastAPI, Django, or a custom server).
-
-Every section is fully commented to explain structure and purpose.
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <!-- Page title shown in browser tab -->
     <title>Jetstream Login</title>
 
-    <!--
-    Inline CSS is used here so the file remains fully standalone.
-    In production, you can move this to a separate stylesheet.
-    -->
     <style>
-        /* Basic page layout: center content vertically and horizontally */
+        /* Basic page layout */
         body {
             font-family: Arial, sans-serif;
-            background: #e8f0ff; /* Light aviation-themed blue */
+            background: #e8f0ff;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
             margin: 0;
         }
 
-        /* Container that holds the login form */
+        /* Login container */
         .login-container {
             background: white;
             padding: 30px;
@@ -40,14 +25,14 @@ Every section is fully commented to explain structure and purpose.
             box-shadow: 0 0 15px rgba(0,0,0,0.15);
         }
 
-        /* Header text styling */
+        /* Header styling */
         h2 {
             text-align: center;
-            color: #003366; /* Jetstream corporate blue */
+            color: #003366;
             margin-bottom: 20px;
         }
 
-        /* Input fields styling */
+        /* Input fields */
         input {
             width: 100%;
             padding: 12px;
@@ -57,7 +42,7 @@ Every section is fully commented to explain structure and purpose.
             font-size: 14px;
         }
 
-        /* Login button styling */
+        /* Login button */
         button {
             width: 100%;
             padding: 12px;
@@ -70,7 +55,7 @@ Every section is fully commented to explain structure and purpose.
             font-size: 15px;
         }
 
-        /* Hover effect for button */
+        /* Button hover effect */
         button:hover {
             background: #0055aa;
         }
@@ -79,26 +64,12 @@ Every section is fully commented to explain structure and purpose.
 
 <body>
 
-    <!--
-    Main login container.
-    The form posts to the Python backend at /login.
-    -->
     <div class="login-container">
         <h2>Jetstream Login</h2>
 
-        <!--
-        The form uses POST to send login credentials securely.
-        The backend will handle authentication and redirection.
-        -->
         <form action="/login" method="POST">
-
-            <!-- Email input field -->
             <input type="email" name="email" placeholder="Email" required />
-
-            <!-- Password input field -->
             <input type="password" name="password" placeholder="Password" required />
-
-            <!-- Submit button -->
             <button type="submit">Login</button>
         </form>
     </div>
