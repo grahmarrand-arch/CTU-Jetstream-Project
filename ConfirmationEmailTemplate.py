@@ -1,5 +1,4 @@
 # Generates confirmation email text for Jetstream Airlines.
-# Render-safe version with no triple-quoted strings or YAML-like formatting.
 # This module only builds the email body; it does not send emails.
 
 class ConfirmationEmailTemplate:
