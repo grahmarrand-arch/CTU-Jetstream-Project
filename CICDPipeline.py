@@ -1,6 +1,4 @@
 # CI/CD pipeline for Jetstream LLC.
-# Includes dependency installation, linting, and testing.
-
 
 import subprocess
 import sys
@@ -53,22 +51,19 @@ class CICDPipeline:
         )
 
     def run_pipeline(self):
-        # Step 1: Install dependencies
         if self.install_dependencies() != 0:
-            print("[CI/CD] ❌ Dependency installation failed.")
+            print("[CI/CD] Dependency installation failed.")
             return 1
 
-        # Step 2: Lint
         if self.run_lint() != 0:
-            print("[CI/CD] ❌ Linting failed.")
+            print("[CI/CD] Linting failed.")
             return 1
 
-        # Step 3: Tests
         if self.run_tests() != 0:
-            print("[CI/CD] ❌ Tests failed.")
+            print("[CI/CD] Tests failed.")
             return 1
 
-        print("[CI/CD] ✅ Pipeline completed successfully.")
+        print("[CI/CD] Pipeline completed successfully.")
         return 0
 
 
