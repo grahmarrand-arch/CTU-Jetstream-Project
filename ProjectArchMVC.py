@@ -1,5 +1,4 @@
 # Jetstream MVC-style project structure generator.
-# Render-safe version with simple comments only.
 
 from pathlib import Path
 
