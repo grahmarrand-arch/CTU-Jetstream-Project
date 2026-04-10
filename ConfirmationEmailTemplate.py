@@ -1,60 +1,44 @@
-"""
-This module generates a confirmation email template for Jetstream LLC.
-
-It is fully commented and designed to integrate into any Python backend.
-The template is dynamic and booking details are inserted at runtime.
-
-This module does NOT send emails; it only generates the email body.
-A separate email-sending module can import and use this.
-"""
+# Generates confirmation email text for Jetstream Airlines.
+# Render-safe version with no triple-quoted strings or YAML-like formatting.
+# This module only builds the email body; it does not send emails.
 
 class ConfirmationEmailTemplate:
-    """
-    Encapsulates all logic for generating confirmation emails.
-    Keeping templates centralized ensures consistent branding and formatting.
-    """
+    # Encapsulates logic for generating confirmation emails.
+    # Keeping templates centralized ensures consistent formatting.
 
-    def generate_email(self, passenger_name: str, flight_number: str,
-                       departure: str, destination: str, date: str,
-                       seat_class: str, total_fare: float) -> str:
-        """
-        Generates a formatted confirmation email.
+    def generate_email(
+        self,
+        passenger_name: str,
+        flight_number: str,
+        departure: str,
+        destination: str,
+        date: str,
+        seat_class: str,
+        total_fare: float
+    ) -> str:
+        # Generates a formatted confirmation email using f-string assembly.
+        # All formatting is done with simple string concatenation to avoid
+        # multi-line triple-quoted blocks that Render may misinterpret.
 
-        Parameters:
-            passenger_name: Name of the passenger
-            flight_number: Jetstream flight identifier
-            departure: Departure airport/city
-            destination: Destination airport/city
-            date: Flight date
-            seat_class: Selected seat class
-            total_fare: Final fare after calculations
+        lines = []
+        lines.append(f"Dear {passenger_name},")
+        lines.append("")
+        lines.append("Thank you for booking with Jetstream Airlines!")
+        lines.append("Your reservation has been successfully confirmed.")
+        lines.append("")
+        lines.append("BOOKING DETAILS")
+        lines.append("------------------------------")
+        lines.append(f"Flight Number: {flight_number}")
+        lines.append(f"From: {departure}")
+        lines.append(f"To: {destination}")
+        lines.append(f"Date: {date}")
+        lines.append(f"Seat Class: {seat_class}")
+        lines.append(f"Total Fare: ${total_fare:.2f}")
+        lines.append("")
+        lines.append("We look forward to providing you with a smooth and enjoyable travel experience.")
+        lines.append("")
+        lines.append("Safe travels,")
+        lines.append("Jetstream Airlines")
 
-        Returns:
-            A string containing the full email body.
-        """
-
-        # Build the email body using f-string formatting
-        email_body = f"""
-        Dear {passenger_name},
-
-        Thank you for booking with Jetstream Airlines!
-        Your reservation has been successfully confirmed.
-
-        ------------------------------
-        BOOKING DETAILS
-        ------------------------------
-        Flight Number: {flight_number}
-        From: {departure}
-        To: {destination}
-        Date: {date}
-        Seat Class: {seat_class}
-        Total Fare: ${total_fare:.2f}
-
-        We look forward to providing you with a smooth and enjoyable travel experience.
-
-        Safe travels,
-        Jetstream Airlines
-        """
-
-        # Return the final email text
-        return email_body.strip()
+        # Join lines into a single email body string
+        return "\n".join(lines)
