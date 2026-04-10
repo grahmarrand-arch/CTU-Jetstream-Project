@@ -1,6 +1,4 @@
 """
-registration_service.py
------------------------
 This module handles all backend user registration logic.
 It is intentionally designed as a standalone component so it can be
 plugged into any Python-based backend (FastAPI, Flask, custom framework, etc.).
