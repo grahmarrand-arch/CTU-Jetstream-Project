@@ -1,27 +1,9 @@
-# Jetstream Airline Backend - Python Dependencies
-# These packages are required for the backend, CI/CD, and deployment.
-
-# Web framework and server
 fastapi
 uvicorn
-
-# MySQL database driver
 mysql-connector-python
-
-# Password hashing for authentication
 bcrypt
-
-# Required for handling HTML form submissions in FastAPI
 python-multipart
-
-# Email validation for registration and confirmation
 email-validator
-
-# Template rendering engine for HTML views
 jinja2
-
-# Linting tool used in CI/CD pipeline
 flake8
-
-# Test runner used in CI/CD pipeline
 pytest
