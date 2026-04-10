@@ -1,7 +1,6 @@
 # Handles all Sprint 1 flight search logic.
 # Filters by departure, destination, and date.
 # Returns price and flight times for display.
-# Render-safe version with no triple-quoted strings.
 
 from app.database import get_connection
 
