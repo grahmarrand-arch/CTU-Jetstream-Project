@@ -1,9 +1,0 @@
-fastapi
-uvicorn
-mysql-connector-python
-bcrypt
-python-multipart
-email-validator
-jinja2
-flake8
-pytest
