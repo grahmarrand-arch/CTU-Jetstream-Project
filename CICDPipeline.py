@@ -1,9 +1,9 @@
 """
 ci_cd_pipeline.py
 -----------------
-Improved CI/CD pipeline module for Jetstream LLC.
+CI/CD pipeline module for Jetstream LLC.
 
-This version includes:
+Includes:
 - Full error handling
 - Detection of missing tools (flake8, pytest)
 - Clear console output
