@@ -1,10 +1,8 @@
 """
-confirmation_email_template.py
-------------------------------
-This standalone module generates a confirmation email template for Jetstream LLC.
+This module generates a confirmation email template for Jetstream LLC.
 
 It is fully commented and designed to integrate into any Python backend.
-The template is dynamic — booking details are inserted at runtime.
+The template is dynamic and booking details are inserted at runtime.
 
 This module does NOT send emails; it only generates the email body.
 A separate email-sending module can import and use this.
