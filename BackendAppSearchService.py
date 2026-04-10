@@ -1,5 +1,4 @@
 """
-search_service.py
 Handles all Sprint 1 flight search logic.
 Filters by departure, destination, and date.
 Returns price and flight times for display.
