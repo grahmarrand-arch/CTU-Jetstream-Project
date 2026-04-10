@@ -1,6 +1,5 @@
 """
-login_controller.py
--------------------
+
 This module handles login logic for Jetstream LLC.
 It is fully standalone and can be integrated into any Python backend.
 
