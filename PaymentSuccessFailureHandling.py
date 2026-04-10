@@ -1,5 +1,4 @@
 # Payment success and failure handler for Jetstream.
-# Render-safe version with simple comments.
 
 from confirmation_messages import success_message, error_message
 
