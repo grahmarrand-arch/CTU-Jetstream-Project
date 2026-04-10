@@ -1,4 +1,3 @@
--- flights.sql
 -- Sprint 1: Core flights table for search functionality.
 -- Stores departure, destination, date/time, and price.
 
