@@ -1,7 +1,6 @@
 """
-payment_handler.py
-------------------
-This standalone module handles payment success and failure responses
+
+This module handles payment success and failure responses
 for Jetstream LLC's booking system.
 
 It provides:
