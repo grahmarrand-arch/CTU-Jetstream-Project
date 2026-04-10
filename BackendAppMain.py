@@ -1,5 +1,4 @@
 """
-main.py
 FastAPI entry point for Jetstream Sprint 1.
 Exposes a /search endpoint using the search service.
 """
