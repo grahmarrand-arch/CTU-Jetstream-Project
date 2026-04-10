@@ -4,6 +4,15 @@
 
 from fastapi import FastAPI
 from app.search_service import search_flights
+from fastapi.responses import HTMLResponse
+from no_flights_ui import NoFlightsUI
+
+app = FastAPI()
+ui = NoFlightsUI()
+
+@app.get("/no-flights", response_class=HTMLResponse)
+def no_flights():
+    return ui.build_page()
 
 # Create the FastAPI application instance
 app = FastAPI()
