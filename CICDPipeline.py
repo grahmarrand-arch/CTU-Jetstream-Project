@@ -1,10 +1,6 @@
-# CI/CD pipeline module for Jetstream LLC.
-# This version is Render-safe and avoids triple-quoted strings.
-# Includes:
-# - Error handling
-# - Detection of missing tools (flake8, pytest)
-# - Clear console output
-# - Safe execution even if tests/linters are missing
+# CI/CD pipeline for Jetstream LLC.
+# Includes dependency installation, linting, and testing.
+
 
 import subprocess
 import sys
@@ -12,68 +8,70 @@ from pathlib import Path
 
 
 class CICDPipeline:
-    # Encapsulates CI/CD-related commands for local and automated pipelines.
+    # Encapsulates CI/CD commands for local and automated pipelines.
 
-    def __init__(self, project_root: str = "."):
-        # project_root: Base directory of the Jetstream project.
+    def __init__(self, project_root="."):
         self.root = Path(project_root).resolve()
 
-    def _run_command(self, command: list, description: str) -> int:
-        # Runs a shell command with error handling.
+    def _run(self, command, description):
         print(f"[CI/CD] {description}...")
-
         try:
             result = subprocess.run(
                 command,
                 cwd=self.root,
-                check=False  # Do not raise exceptions on failure
+                check=False
             )
             return result.returncode
-
         except FileNotFoundError:
-            print(f"[CI/CD] ERROR: Required tool not found -> {command[0]}")
+            print(f"[CI/CD] ERROR: Missing tool → {command[0]}")
             return 1
 
-    def run_lint(self) -> int:
-        # Runs linting using flake8.
-        return self._run_command(
-            ["flake8", "."],
-            "Running lint with flake8"
+    def install_dependencies(self):
+        # Installs all Python dependencies from requirements.txt.
+        req_file = self.root / "requirements.txt"
+        if not req_file.exists():
+            print("[CI/CD] ERROR: requirements.txt not found.")
+            return 1
+
+        return self._run(
+            [sys.executable, "-m", "pip", "install", "-r", "requirements.txt"],
+            "Installing dependencies"
         )
 
-    def run_tests(self) -> int:
-        # Runs the test suite using pytest.
+    def run_lint(self):
+        return self._run(["flake8", "."], "Running flake8 linting")
 
+    def run_tests(self):
         tests_path = self.root / "tests"
         if not tests_path.exists():
             print("[CI/CD] WARNING: No tests/ directory found. Skipping tests.")
-            return 0  # Not an error
+            return 0
 
-        return self._run_command(
+        return self._run(
             [sys.executable, "-m", "pytest", "tests"],
-            "Running tests with pytest"
+            "Running pytest test suite"
         )
 
-    def run_pipeline(self) -> int:
-        # Runs the full CI/CD pipeline sequence: lint then tests.
+    def run_pipeline(self):
+        # Step 1: Install dependencies
+        if self.install_dependencies() != 0:
+            print("[CI/CD] ❌ Dependency installation failed.")
+            return 1
 
-        lint_code = self.run_lint()
-        if lint_code != 0:
-            print("[CI/CD] Linting failed.")
-            return lint_code
+        # Step 2: Lint
+        if self.run_lint() != 0:
+            print("[CI/CD] ❌ Linting failed.")
+            return 1
 
-        test_code = self.run_tests()
-        if test_code != 0:
-            print("[CI/CD] Tests failed.")
-            return test_code
+        # Step 3: Tests
+        if self.run_tests() != 0:
+            print("[CI/CD] ❌ Tests failed.")
+            return 1
 
-        print("[CI/CD] Pipeline completed successfully.")
+        print("[CI/CD] ✅ Pipeline completed successfully.")
         return 0
 
 
 if __name__ == "__main__":
-    # Allows: python ci_cd_pipeline.py
-    # to run the full pipeline locally or in CI.
     pipeline = CICDPipeline(".")
-    exit_code = pipeline.run_pipeline()
-    sys.exit(exit_code)
+    sys.exit(pipeline.run_pipeline())
