@@ -1,6 +1,5 @@
 """
-password_utils.py
------------------
+
 This module handles password hashing and verification.
 It uses bcrypt, which is a secure, industry-standard hashing algorithm.
 
