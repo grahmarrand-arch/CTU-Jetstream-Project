@@ -1,9 +1,10 @@
 # FastAPI entry point for Jetstream Sprint 1.
 # Exposes a /search endpoint using the search service.
-# Triple-quoted strings were removed to avoid Render JSON parsing issues.
 
 from fastapi import FastAPI
 from app.search_service import search_flights
+from fastapi import FastAPI
+from flight_search_api import flight_search_router
 
 # Create the FastAPI application instance
 app = FastAPI()
@@ -18,3 +19,6 @@ def search(departure: str = None, destination: str = None, date: str = None):
     a list of matching flights in JSON format.
     """
     return {"flights": search_flights(departure, destination, date)}
+    
+    # Mount the flight search API
+app.include_router(flight_search_router, prefix="/api")
