@@ -5,6 +5,13 @@ from fastapi import FastAPI
 from app.search_service import search_flights
 from fastapi import FastAPI
 from flight_search_api import flight_search_router
+from registration_ui import registration_ui_router
+from registration_service import registration_service_router
+
+app = FastAPI()
+
+app.include_router(registration_ui_router, prefix="/ui")
+app.include_router(registration_service_router, prefix="/api")
 
 # Create the FastAPI application instance
 app = FastAPI()
